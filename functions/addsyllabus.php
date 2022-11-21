@@ -3,34 +3,31 @@
         <title>Add Syllabus</title>
     </head>
     <body>
-        <?php 
+        <?php
 
-        include_once("../dbConnection/db_connect.php");
+        include_once("../dbConnection/mysqlconfig_connection.php");
 
-        if(isset($_POST['Submit'])) {
+        if(isset($_POST['Submit'])){
             $code = $_POST['code'];
             $author = $_POST['author'];
             $subject = $_POST['subject'];
 
-            if(empty($code) || empty($author)) {
-                if(empty($code)) {
-                    echo "Syllabus code field is empty<br/>";
+            if(empty($code) || empty($author)){
+                if(empty($code)){
+                    echo "<font color='red'>Syllabus Code field is empty</font><br/>";
                 }
                 if(empty($author)) {
-                    echo "Author field is empty<br/>";
+                    echo "<font color='red'>Syllabus Author field is empty</font><br/>";
                 }
                 echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
             }
             else {
-                $result = mysqli_query($link,"INSERT INTO tblsyllabus(syllabus_code,syllabus_author) VALUES ('$code','$author')");
-                echo "Data Added successfully";
+                $result = mysqli_query($link, "INSERT INTO tblsyllabus(subject_id, syllabus_code, syllabus_author) VALUES('$subject' ,'$code', '$author')");
+                echo "<font color='green'>Data added successfully.";
                 echo "<br/><a href = '../index.php'>View Result</a>";
             }
         }
 
-
-
         ?>
-        
     </body>
 </html>
