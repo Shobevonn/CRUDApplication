@@ -1,5 +1,5 @@
 <?php
-    //fetching data
-    $query = "SELECT * FROM tblsubject";
-    $result = mysql_query ($dbc, $query); //using mysql_query
+    $query = "SELECT * FROM tblsubjects LEFT JOIN tblsyllabus ON tblsyllabus.subject_id = tblsubjects.Subject_ID";
+    $result = mysqli_query($link, $query);
+
 ?>
